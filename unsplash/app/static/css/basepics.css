@@ -1,0 +1,7 @@
+.grey {
+  color: grey;
+}
+
+.grey:hover {
+  color: black;
+}
