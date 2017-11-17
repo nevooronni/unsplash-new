@@ -1,30 +1,25 @@
-from django.http import HttpResponse 
-import datetime as dt
+from django.http import HttpResponse,Http404
+from django.shortcuts import render,redirect 
+import datetime as dt 
 
-# Create your views here.
-def welcome(request):
-	return HttpResponse('Welcome to the Moringa Tribune')
-
-def pics_of_day(request):
+def pics_today(request):
 	date = dt.date.today()
 
-	#function to find exact day 
-	day = convert_dates(date)
-	html = f'''
-				<html>
-						<body>
-								<h1>Pics for {day} {date.day}-{date.month}-{date.year}</h1>
-						</body>
-				</html>
-					'''
-	return HttpResponse(html)
+	return render(request,'all-app/today-pics.html', {"date":date})
 
-def convert_dates(dates):#takes in date object
-	#functions that gets the weekday number for the date
-	day_number = dt.date.weekday(dates)#call date.weekday pass in date object
 
-	days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+def past_days_pics(request,past_date):#pass in request object and date from url
+	
+	try:
+		#changes string url
+		date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()#convert date url to date object
 
-	#return the actual day of the week
-	day = days[day_number]
-	return day 
+	except ValueError:
+		#Raise 404 error when ValueError is thrown 
+		raise Http404()
+		assert False
+
+	if date == dt.date.today():
+		return redirect(pics_today)
+
+	return render(request, 'all-app/past-pics.html', {"date":date})
