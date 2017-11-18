@@ -1,4 +1,5 @@
 from django.db import models
+import datetime as dt
 
 class User(models.Model):
 	first_name = models.CharField(max_length = 30)#string field for small to large sized strings passes a required argument max_length
@@ -68,7 +69,12 @@ class Photo(models.Model):
 	@classmethod
 	def display_photos(cls):
 		all_photos = Photo.objects.all()
-		return all_photos 
+		return all_photos
 
+	@classmethod
+	def new_photos(cls):
+		today = dt.date.today()#gets todays photos
+		photos = cls.objects.filter(pub_date__date = today)#query db to filter the phoost according to date date converts our datetimefield into a date(two underscores definition)
+		return photos
 
 

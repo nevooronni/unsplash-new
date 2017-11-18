@@ -103,3 +103,7 @@ class PhotoTestClass(TestCase):
 		all_photos = Photo.objects.all()
 		self.assertTrue(len(photos) == len(all_photos))
 
+	def test_new_photos_method(self):
+		self.photo.save_photo()
+		today_photos = Photo.new_photos()
+		self.assertTrue(len(today_photos) > 0)
