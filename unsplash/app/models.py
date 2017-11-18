@@ -24,7 +24,7 @@ class User(models.Model):
 
 	@classmethod
 	def display_users(cls):
-		users = User.obects.all()
+		users = User.objects.all()
 		return users
 
 class tags(models.Model):

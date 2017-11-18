@@ -27,6 +27,6 @@ class UserTestClass(TestCase):
 	#test for display method
 	def test_display_method(self):
 		self.neville.save_user()
-		all_users = Editor.display_users()
+		all_users = User.display_users()
 		users = User.objects.all()
 		self.assertTrue(len(all_users) == len(users))
