@@ -33,6 +33,23 @@ class tags(models.Model):
 	def __str__(self):
 		return self.name 
 
+	def save_tag(self):
+		self.save()
+
+	def delete_tag(self):
+		self.delete()
+
+	@classmethod
+	def display_tags(cls):
+		all_tags = tags.objects.all()
+		return all_tags
+
+	@classmethod
+	def search_for_tag(cls,search_input):
+		tags = cls.objects.filter(name__icontains=search_input)
+		return tags
+
+
 class Photo(models.Model):
 	title = models.CharField(max_length = 30)
 	user = models.ForeignKey(User)#one to many relationship with the editor

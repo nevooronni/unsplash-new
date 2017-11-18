@@ -30,3 +30,39 @@ class UserTestClass(TestCase):
 		all_users = User.display_users()
 		users = User.objects.all()
 		self.assertTrue(len(all_users) == len(users))
+
+class tagsTestClass(TestCase):
+	
+	#set up method 
+	def setUp(self):
+		self.nature	= tags(name = "nature")	
+
+	#test instance
+	def test_instance(self):
+		self.assertTrue(isinstance(self.nature,tags))
+
+	#test the save method 
+	def test_save_method(self):
+		self.nature.save_tag()
+		all_tags = tags.objects.all()
+		self.assertTrue(len(all_tags) > 0)
+
+	#test the delete method
+	def test_delete_method(self):
+		self.nature.save_tag()
+		self.nature.delete_tag()
+		all_tags = tags.objects.all()
+		self.assertTrue(len(all_tags) == 0)
+
+	#test for the display method
+	def test_display_method(self):
+		self.nature.save_tag()
+		all_display_tags = tags.display_tags()
+		all_tags = tags.objects.all()
+		self.assertTrue(len(all_display_tags) == len(all_tags))
+
+	#test if you search for tag you get it
+	def test_search_method(self):
+		self.nature.save_tag()
+		searched_tag = tags.search_for_tag('nature')
+		self.assertTrue(len(searched_tag) == 1)
