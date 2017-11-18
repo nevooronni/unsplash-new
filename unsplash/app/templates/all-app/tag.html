@@ -1,9 +1,9 @@
-{% extends 'all-app/base.html %}
+{% extends 'all-app/base.html' %}
   {% load static %}
 
   {% block styles %}
   <!--block styles-->
-
+    {{block.super}}
   {% endblock %}
 
   {% block content %}
@@ -14,7 +14,7 @@
       </div>
       <div class="row">
         {% for photo in photos %}
-        <a href="{% url 'photos' photo.id %}"><img src="{{photo.url}}" alt={{photo.name}} class="img-responsive">
+        <a href="{% url 'photo' photo.id %}"><img src="{{photo.image.url}}" alt={{photo.name}} class="img-responsive">
         </a>
         {% endfor %}
       </div>

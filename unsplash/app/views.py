@@ -52,7 +52,7 @@ def search_results(request):
 def photo(request,photo_id):
 	try:
 		photo = Photo.objects.get(id = photo_id)#get specific photo
-		
+
 	except DoesNotExist:
 		raise Http404()
 
@@ -65,7 +65,6 @@ def tag(request,tag_id):
 
 	except DoesNotExist:
 		raise Http404()
-
-	title = f'{tag.name} photos'	
-	return render(request,'all-app/tag.html',{"title":title,"tag":tag,"photos":photos})
+	
+	return render(request,'all-app/tag.html',{"tag":tag,"photos":photos})
 
