@@ -66,3 +66,40 @@ class tagsTestClass(TestCase):
 		self.nature.save_tag()
 		searched_tag = tags.search_for_tag('nature')
 		self.assertTrue(len(searched_tag) == 1)
+
+class PhotoTestClass(TestCase):
+
+	def setUp(self):
+		#creating new user
+		self.neville = User(first_name = 'Neville',last_name = 'Oronni',email = 'nevooronni@gmail.com')
+		self.neville.save_user()
+
+		#create and new tag
+		self.nature	= tags(name = "nature")
+		self.nature.save_tag()
+
+		#create new photo
+		self.photo = Photo(title = 'arsenal',user = self.neville)
+
+	def test_save_method(self):
+		self.photo.save_photo()
+		all_photos = Photo.objects.all()
+		self.assertTrue(len(all_photos) > 0)
+
+	def test_delete_method(self):
+		self.photo.save_photo()
+		self.photo.delete_photo()
+		all_photos = Photo.objects.all()
+		self.assertTrue(len(all_photos) == 0)
+
+	def tearDown(self):#deletes all our model instances from db after each test
+		User.objects.all().delete()
+		tags.objects.all().delete()
+		Photo.objects.all().delete()	
+
+	def test_display_method(self):
+		self.photo.save_photo()
+		photos = Photo.display_photos()
+		all_photos = Photo.objects.all()
+		self.assertTrue(len(photos) == len(all_photos))
+

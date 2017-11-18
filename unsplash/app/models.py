@@ -55,3 +55,20 @@ class Photo(models.Model):
 	user = models.ForeignKey(User)#one to many relationship with the editor
 	tags = models.ManyToManyField(tags)#many to many relationship with the tags model
 	pub_date = models.DateTimeField(auto_now_add=True)#stores exact time our photos were posted to the db
+
+	def __str__(self):
+		return self.title
+
+	def save_photo(self):
+		self.save()
+
+	def delete_photo(self):
+		self.delete()
+
+	@classmethod
+	def display_photos(cls):
+		all_photos = Photo.objects.all()
+		return all_photos 
+
+
+
