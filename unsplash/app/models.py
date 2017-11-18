@@ -56,6 +56,7 @@ class Photo(models.Model):
 	user = models.ForeignKey(User)#one to many relationship with the editor
 	tags = models.ManyToManyField(tags)#many to many relationship with the tags model
 	pub_date = models.DateTimeField(auto_now_add=True)#stores exact time our photos were posted to the db
+	image = models.ImageField(upload_to = 'photos/')
 
 	def __str__(self):
 		return self.title

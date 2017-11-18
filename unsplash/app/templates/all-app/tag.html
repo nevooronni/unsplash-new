@@ -1,0 +1,22 @@
+{% extends 'all-app/base.html %}
+  {% load static %}
+
+  {% block styles %}
+  <!--block styles-->
+
+  {% endblock %}
+
+  {% block content %}
+    {{block.super}}
+    <div class="container">
+      <div class="row">
+        <h1>{{tag.name}}</h1>
+      </div>
+      <div class="row">
+        {% for photo in photos %}
+        <a href="{% url 'photos' photo.id %}"><img src="{{photo.url}}" alt={{photo.name}} class="img-responsive">
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endblock %}

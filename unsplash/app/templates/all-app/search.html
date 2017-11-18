@@ -1,5 +1,7 @@
 {% extends 'all-app/base.html %}
+  {% load static %}
   {% block content %}
+    {{block.super}}
     <div class="container">
       <div class="row">
         {% if photos %}
@@ -12,7 +14,7 @@
         {% if photos %}
           {% for photo in photos %}
             <div class="">
-              <h1>{{photos.title}}</h1>
+              <h1>{{photo.title}}</h1>
             </div>
           {% endfor %}
         {% endif %}
