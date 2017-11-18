@@ -107,3 +107,8 @@ class PhotoTestClass(TestCase):
 		self.photo.save_photo()
 		today_photos = Photo.new_photos()
 		self.assertTrue(len(today_photos) > 0)
+
+	def test_search_method(self):
+		self.photo.save_photo()
+		searched_photo = Photo.search_by_title('arsenal')
+		self.assertTrue(len(searched_photo) == 1)#searched term should only be one in the database

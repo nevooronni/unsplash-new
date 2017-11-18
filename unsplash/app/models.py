@@ -77,4 +77,10 @@ class Photo(models.Model):
 		photos = cls.objects.filter(pub_date__date = today)#query db to filter the phoost according to date date converts our datetimefield into a date(two underscores definition)
 		return photos
 
+	@classmethod
+	def search_by_title(cls,search_term):
+		photo = cls.objects.filter(title__icontains=search_term)
+		return photo
+
+
 

@@ -32,3 +32,17 @@ def pics_today(request):
 # 		return redirect(pics_today)
 
 # 	return render(request, 'all-app/past-pics.html', {"date":date})
+
+def search_results(request):
+
+	if 'photo' in request.GET and request.GET["photo"]:#check if photo query exists in our request.GET object
+		search_term = request.GET.get("photo")#get search term
+		searched_photos = Photo.search_by_title(search_term)#call  our search method
+		message = f"{search_term}"#capture the search term in a variable
+		
+		return render(request,'all-app/search.html',{"message":message,"photos":searched_photos})
+
+	esle:
+		message = "You haven't searched for any term"
+
+		return render(request,'all-app/search.html',{"message":message})	 
