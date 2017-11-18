@@ -21,3 +21,9 @@ class tags(models.Model):
 
 	def __str__(self):
 		return self.name 
+
+class Photo(models.Model):
+	title = models.CharField(max_length = 30)
+	editor = models.ForeignKey(Editor)#one to many relationship with the editor
+	tags = models.ManyToManyField(tags)#many to many relationship with the tags model
+	pub_date = models.DateTimeField(auto_now_add=True)#stores exact time our photos were posted to the db
