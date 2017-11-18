@@ -1,6 +1,6 @@
 from django.db import models
 
-class Editor(models.Model):
+class User(models.Model):
 	first_name = models.CharField(max_length = 30)#string field for small to large sized strings passes a required argument max_length
 	last_name = models.CharField(max_length = 30)
 	email = models.EmailField()
@@ -16,6 +16,17 @@ class Editor(models.Model):
 	class Meta:
 		ordering = ['first_name']#specifying model specific options 
 
+	def save_user(self):
+		self.save()
+
+	def delete_user(self):
+		self.delete()
+
+	@classmethod
+	def display_users(cls):
+		users = User.obects.all()
+		return users
+
 class tags(models.Model):
 	name = models.CharField(max_length = 30)
 
@@ -24,6 +35,6 @@ class tags(models.Model):
 
 class Photo(models.Model):
 	title = models.CharField(max_length = 30)
-	editor = models.ForeignKey(Editor)#one to many relationship with the editor
+	user = models.ForeignKey(User)#one to many relationship with the editor
 	tags = models.ManyToManyField(tags)#many to many relationship with the tags model
 	pub_date = models.DateTimeField(auto_now_add=True)#stores exact time our photos were posted to the db
