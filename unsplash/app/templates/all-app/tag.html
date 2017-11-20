@@ -35,7 +35,7 @@
         {% if photos %}
           {% for photo in photos %}
             <div class="col-sm-6 col-md-4 col-lg-4" id="space1">
-              <a href="{% url 'photo' photo.id %}"><img src="{{photo.image.url}}" class="img-responsive" alt="{{photo.title}}" id="space"></a>
+              <a href="{% url 'photo' photo.id %}"><img src="{{photo.image.url}}" class="img-responsive" alt="{{photo.title}}" id="space"><button class="btn" id="arrow"><i class="glyphicon glyphicon-arrow-down"></i></button></a>
             </div> 
           {% endfor %}
         {% else %}
