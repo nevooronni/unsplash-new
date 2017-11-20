@@ -30,6 +30,7 @@ class User(models.Model):
 
 class tags(models.Model):
 	name = models.CharField(max_length = 30)
+	image = models.ImageField(upload_to = 'photos/')
 
 	def __str__(self):
 		return self.name 
@@ -46,7 +47,7 @@ class tags(models.Model):
 		return all_tags
 
 	@classmethod
-	def search_for_tag(cls,search_input):
+	def search_for_tag(cls,search_term):
 		tags = cls.objects.filter(name__icontains=search_input)
 		return tags
 
@@ -80,7 +81,7 @@ class Photo(models.Model):
 
 	@classmethod
 	def search_by_title(cls,search_term):
-		photo = cls.objects.filter(title__icontains=search_term)
+		photo = cls.objects.filter(tags__icontains=search_term)
 		return photo
 
 

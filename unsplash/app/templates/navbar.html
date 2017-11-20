@@ -5,27 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <div class="col-sm-4 col-md-4 navbar-left">
             <!--search form-->
             <form class="navbar-form" role="search" actions="{% url 'search_results' %}">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Tags" name="tag">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              <span id="camera"><i class="glyphicon glyphicon-camera"></i></span>
+              <div class="input-group" id="group">
+                <div class="input-group-btn" id="button">
+                  <button class="btn btn-default" type="submit" id="search"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
+                <input type="text" class="form-control" placeholder="Search Tags" name="tag" id="input">
               </div>
             </form>
           </div>
-          <a class="navbar-brand" href="{% url 'picsToday' %}">Home</a>
-          <a class="navbar-brand grey" href="">Collections</a>
-          <a class="navbar-brand grey" href="">Explore</a>
-          <a class="navbar-brand grey" href="">About</a>
-          <span class="grey"><i></i></span>
-          <button class="btn grey">Login</button>
-          <button class="btn">Join free</button>
+          <div id="right">
+            <a class="navbar-brand " href="{% url 'picsToday' %}" id="home">Home</a>
+            <a class="navbar-brand" href="" id="grey">Collections</a>
+            <a class="navbar-brand" href="" id="grey">Explore</a>
+            <a class="navbar-brand" href="" id="grey">About</a>
+            <button class="btn grey" id="glyphicon"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+            <button class="btn" id="login">Login</button>
+            <button class="btn" id="join">Join free</button>
+          </div>
         </div>
       </div>
     </nav>

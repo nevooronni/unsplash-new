@@ -8,20 +8,34 @@
 
   {% block content %}
     {{block.super}}
-    <div class="container">
-      <div class="row">
+      <div class="row" id="splash">
         {% for tag in all_tags %}
-          <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <a href="{% url 'tag' tag.id %}">{{tag.name}}</a>
+          <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" id="tag">
+            <h4 class="text-center" id="tagname">{{tag.name}}</h4>
+            <a href="{% url 'tag' tag.id %}"><img src="{{tag.image.url}}" alt="{{tag.name}}" class="" id="cover"></a>
           </div>
         {% endfor %}
       </div>  
-      <div class="row">
-        {% for photo in all_photos %}
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <a href="{% url 'photo' photo.id %}"><img src="{{photo.image.url}}" class="img-responsive" alt="{{photo.title}}"></a>
-          </div> 
-        {% endfor %}
+      <div class="container" id="beauty">
+        <h1 id="unsplash">Unsplash</h1> 
+        <p class="content">Beautiful,free photos.</p>
+        <p class="content" id="bottom">Gifted by the world’s most generous community of photographers. 🎁</p>
+        <button class="btn" id="photo">Submit a photo</button>
+      </div>
+      <div class="container">
+        <div class="row" id="display">
+          <h3 id="trending">Trending</h3>
+          <h3 id="new">New<br><p id="dot">.<p></h3>
+          <i class="glyphicon glyphicon-th-large" id="two"></i>
+          <i class="glyphicon glyphicon-pause" id="four"></i>
+        </div>
+        <div class="row" id="all">
+          {% for photo in all_photos %}
+            <div class="col-sm-6 col-md-4 col-lg-4" id="space1">
+              <a href="{% url 'photo' photo.id %}"><img src="{{photo.image.url}}" class="img-responsive" alt="{{photo.title}}" id="space"></a>
+            </div> 
+          {% endfor %}
+        </div>
       </div>
     </div>
 
