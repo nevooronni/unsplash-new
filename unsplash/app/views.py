@@ -37,7 +37,7 @@ def search_results(request):
 
 	if 'tag' in request.GET and request.GET['tag']:#check if photo query exists in our request.GET object
 		search_term = request.GET.get('tag')#get search term
-		search_tag = tags.search_for_tag(search_term)#call  our search method
+		search_tag = Photo.search_for_tag(search_term)#call  our search method
 		single_tag = searched_tag[0]#single tag
 		photos = Photo.objects.filter(tags=single_tag).all()
 		message = f"{search_term}"#capture the search term in a variable
