@@ -1,21 +1,36 @@
-{% extends 'all-app/base.html %}
+{% extends 'all-app/base.html' %}
   {% load static %}
   {% block content %}
     {{block.super}}
+    <div class="row" id="splash">
+      {% for tag in all_tags %}
+        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" id="tag">
+          <h4 class="text-center" id="tagname">{{tag.name}}</h4>
+          <a href="{% url 'tag' tag.id %}"><img src="{{tag.image.url}}" alt="{{tag.name}}" class="" id="cover"></a>
+        </div>
+      {% endfor %}
+    </div>  
     <div class="container">
-      <div class="row">
-        {% if photos %}
-          <h2>Found {{photos|length}} of searched term {{message}}</h2>
+      <div class="row" id="found">
+        {% if tags %}
+          <h2 id="get">Found {{tags|length}} photos for tag "{{message}}"</h2>
         {% else %}
-          <h2>Found 0 photos for the search term {{message}}</h2>
+          <h2 id="else">Found 0 photos for the search term,{{message}}</h2>
         {% endif %}
       </div>
-      <div class="row">
-        {% if photos %}
-          {% for photo in photos %}
-            <div class="">
-              <img src="{{photo.imag.url}}" alt="{{photo.title}}" class="img-responsive">
-            </div>
+      <div class="container">
+        <div class="row" id="display">
+          <h3 id="trending">Trending</h3>
+          <h3 id="new">New<br><p id="dot">.<p></h3>
+          <i class="glyphicon glyphicon-th-large" id="two"></i>
+          <i class="glyphicon glyphicon-pause" id="four"></i>
+        </div>
+      <div class="row" id="all">
+        {% if tags %}
+          {% for tag in tags %}
+            <div class="col-sm-6 col-md-4 col-lg-4" id="space1">
+              <a href="/{{tag.id}}"><img src="{{tag.image.url}}" class="img-responsive" alt="{{tag.title}}" id="space"><button class="btn" id="arrow"><i class="glyphicon glyphicon-arrow-down"></i></button></a>
+            </div> 
           {% endfor %}
         {% endif %}
       </div>

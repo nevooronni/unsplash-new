@@ -34,20 +34,20 @@ def pics_today(request):
 # 	return render(request, 'all-app/past-pics.html', {"date":date})
 
 def search_results(request):
+	#get all tags
+	all_tags = tags.display_tags()
 
 	if 'tag' in request.GET and request.GET['tag']:#check if photo query exists in our request.GET object
 		search_term = request.GET.get('tag')#get search term
-		search_tag = Photo.search_for_tag(search_term)#call  our search method
-		single_tag = searched_tag[0]#single tag
-		photos = Photo.objects.filter(tags=single_tag).all()
+		search_images = Photo.search_by_tags(search_term)#call  our search method
 		message = f"{search_term}"#capture the search term in a variable
 
-		return render(request,'all-app/search.html',{"message":message,"photos":photos,"tags":search_tag})
+		return render(request,'all-app/search.html',{"message":message,"tags":search_images,"all_tags":all_tags})
 
 	else:
 		message = "You haven't searched for any term"
 
-		return render(request,'all-app/search.html',{"message":message})	 
+		return render(request,'all-app/search.html',{"message":message,"all_tags":all_tags})	 
 
 def photo(request,photo_id):
 	try:

@@ -80,8 +80,8 @@ class Photo(models.Model):
 		return photos
 
 	@classmethod
-	def search_by_title(cls,search_term):
-		photo = cls.objects.filter(tags__icontains=search_term)
+	def search_by_tags(cls,search_term):
+		photo = cls.objects.filter(tags__name__icontains=search_term)
 		return photo
 
 

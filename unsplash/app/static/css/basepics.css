@@ -325,3 +325,16 @@
 .glyphicon-arrow-down {
   color: grey;
 }
+
+#else {
+  margin-top: 100px;
+}
+
+#found {
+  margin-bottom: 60px;
+}
+
+#get {
+  margin-top: 60px;
+  margin-left: 23px;
+}
