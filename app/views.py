@@ -2,6 +2,7 @@ from django.http import HttpResponse,Http404
 from django.shortcuts import render,redirect 
 import datetime as dt 
 from .models import Photo,tags,User
+from .forms import NewsLetterForm
 
 def pics_today(request):
 	#get all tags
@@ -13,6 +14,13 @@ def pics_today(request):
 	#get all photos for that day 
 	date = dt.date.today()
 	photos = Photo.new_photos()
+
+	# if request.method == 'POST':
+	# 	form = NewsLetterForm(request.POST)
+	# 	if form.is_valid():
+	# 		print('valid')
+	# 	else:
+	# 		form = NewsLetterForm()
 
 	return render(request,'all-app/today-pics.html', {"date":date,"photos":photos,"all_tags":all_tags,"all_photos":all_photos})
 

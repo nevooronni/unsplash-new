@@ -3,11 +3,11 @@
   
   <!--styles block-->
   {% block styles %}
-    {{block.super}}
+    {{ block.super }}
   {% endblock %}
 
   {% block content %}
-    {{block.super}}
+    {{ block.super }}
       <div class="row" id="splash">
         {% for tag in all_tags %}
           <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" id="tag">
@@ -32,7 +32,43 @@
         <div class="row" id="all">
           {% for photo in all_photos %}
             <div class="col-sm-6 col-md-4 col-lg-4" id="space1">
-              <a href="{% url 'photo' photo.id %}"><img src="{{photo.image.url}}" class="img-responsive" alt="{{photo.title}}" id="space"><button class="btn" id="arrow"><i class="glyphicon glyphicon-arrow-down"></i></button></a>
+              <a href="{% url 'photo' photo.id %}" data-toggle="modal" data-target="#myModal"><img src="{{photo.image.url}}" class="img-responsive" alt="{{photo.title}}" id="space"><button class="btn" id="arrow"><i class="glyphicon glyphicon-arrow-down"></i></button></a>
+              <!-- Modal -->
+              <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog" style="height:1350px;">
+
+                  <!-- Modal content-->
+                  <div class="modal-content" id="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" id=close>&times;</button>
+                      <button class="btn" id="link">Copy Link</button>
+                      <button class="btn" id="d"><i class="glyphicon glyphicon-arrow-down"></i></button>
+                    </div>
+                    <div class="modal-body">
+                      <img src="{{photo.image.url}}" alt="{{photo.title}}" class="img-responsive" style="margin-left: -56px; width: 100%;">
+                      <button class="btn" id="info"><i class="glyphicon glyphicon-info-sign"></i>info</button>
+                      <button class="btn" id="share"><i class="glyphicon glyphicon-share-alt"></i>share</button>
+                      <h4 id="related">Related Photos</h4>
+                      <div class="container-fluid" id="all2">
+                          {% for photo in all_photos %}
+                            <div class="col-sm-6 col-md-4 col-lg-4" id="spaceModal">
+                              <a href="{% url 'photo' photo.id %}"><img src="{{photo.image.url}}" class="img-responsive" alt="{{photo.title}}" id="space2"><button class="btn" id="arrow2"><i class="glyphicon glyphicon-arrow-down"></i></button></a>
+                            </div> 
+                          {% endfor %}
+                          <div class="row" id="splash">
+                            <h4 id="rt">Related Tags</h4>
+                            {% for tag in all_tags %}
+                              <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="height: 50px; width: 145px; margin-right: 20px; margin-left: -9px; margin-bottom: 10px; border-radius: 5px;">
+                                <h4 class="text-center" id="tagname2" style="text-align: center;">{{tag.name}}</h4>
+                                <a href="{% url 'tag' tag.id %}"><img src="{{tag.image.url}}" alt="{{tag.name}}" class="" style="height: 50px; width: 145px; margin-right: 20px; margin-left: -9px; border-radius: 5px;"></a>
+                              </div>
+                          {% endfor %}
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div> 
           {% endfor %}
         </div>

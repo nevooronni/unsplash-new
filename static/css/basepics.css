@@ -338,3 +338,32 @@
   margin-top: 60px;
   margin-left: 23px;
 }
+
+#imageModal {
+  margin-left: -40px;
+  width: 900px;
+  cursor: pointer;
+}
+
+#tag2 {
+  border-radius: 5px;
+  height: 50px;
+  width: 115px;
+  margin-right: 10px;
+  background-color: grey;
+}
+
+#tag2:hover {
+  cursor: pointer;
+}
+
+#cover2 {
+  border-radius: 5px;
+  margin-left: -15px;
+  height: 50px;
+  width: 115px;
+}
+
+#cover2:hover {
+  opacity: 0.80;
+}

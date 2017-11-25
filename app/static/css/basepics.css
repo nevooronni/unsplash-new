@@ -4,7 +4,7 @@
   background-color: #fff;
   border-style: none;
   border-color: transparent;
-  z-index: 4;
+  z-index: 3;
 }
 
 .navbar-form {
@@ -338,3 +338,191 @@
   margin-top: 60px;
   margin-left: 23px;
 }
+
+#modalImage {
+  height: 600px;
+  width: 900px;
+  margin-right: 100px;
+}
+
+#modalImage:hover {
+  margin-left: -46px;
+  transform: scale(1.4);
+  width: 80%;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding-left: 180px;
+  padding-right: 80px;
+  padding-bottom: 80px;
+  height: auto;
+}
+
+.modal-dialog {
+  width: 1270px;
+}
+
+#modal-content {
+  height: auto;
+  margin-bottom: 100px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+#link {
+  float: right;
+  width: 200px;
+  background-color: #3cb46e;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: 10px;
+}
+
+#d {
+  float: right;
+  width: 100px;
+  background-color: transparent;
+  color: grey;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  opacity: 0.60;
+}
+
+#d:hover {
+  opacity: 1.0;
+  border-color: #111;
+  color: #111;
+}
+
+#close {
+  position: fixed !important;
+  top: 4px;
+  left: -100px;
+  color: #fff;
+  font-size: 36px;
+  opacity: 0.80;
+}
+
+#close:hover {
+  opacity: 1.0;
+}
+
+#info {
+  float: right;
+  margin-top: 30px;
+  width: 90px;
+  margin-left: 4px;
+  margin-right: -70px;
+  border-radius: 0px;
+  height: 45px;
+  background-color: transparent;
+  color: grey;
+
+}
+
+#info:hover {
+  color: #111;
+}
+
+#share {
+  float: right;
+  margin-top: 30px;
+  width: 90px;
+  height: 45px;
+  background-color: transparent;
+  color: grey;
+}
+
+#share:hover {
+  color: #111;
+}
+
+.glyphicon-info-sign {
+  margin-right: 10px;
+}
+
+.glyphicon-share-alt {
+  margin-right: 10px;
+}
+
+#related {
+  float: left;
+  clear: right;
+  margin-top: 120px;
+  margin-left: -160px;
+}
+
+#all2 {
+  margin-top: 220px;
+  margin-left: -200px;
+  width: 1295px;
+}
+
+#arrow2 {
+  background-color: #D3D3D3;
+  position: absolute;
+  top: 75%;
+  left: 80%;
+  height: 40px;
+  width: 40px; 
+}
+
+#space2 {
+  height: 300px;
+  width: 600px;
+  margin: 4px;
+  object-fit: cover;
+}
+
+#rt {
+  margin-bottom: 50px;
+  margin-left: -1px;
+  margin-bottom: 30px;
+}
+
+#spaceModal {
+  margin-bottom: 40px;
+}
+
+#tag2 {
+  border-radius: 5px;
+  height: 50px;
+  width: 145px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: grey;
+}
+
+#tag2:hover {
+  cursor: pointer;
+}
+
+#tagname2 {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 14px;
+  color: #fff;
+  font-size: 16px;
+}
+
+#cover2 {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-left: -15px;
+  height: 50px;
+}
+
+#cover2:hover {
+  opacity: 0.80;
+}
+
+#modalImage {
+  margin-left: -56px;
+  height: 600px;
+  width: 800px;
+}
+

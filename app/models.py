@@ -48,7 +48,7 @@ class tags(models.Model):
 
 	@classmethod
 	def search_for_tag(cls,search_term):
-		tags = cls.objects.filter(name__icontains=search_input)
+		tags = cls.objects.filter(name__icontains=search_term)
 		return tags
 
 
@@ -85,4 +85,6 @@ class Photo(models.Model):
 		return photo
 
 
-
+class NewsLetterRecipents(models.Model):
+	name = models.CharField(max_length = 30)
+	email = models.EmailField()

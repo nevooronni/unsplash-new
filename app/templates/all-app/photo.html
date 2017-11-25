@@ -1,4 +1,4 @@
-{% extends 'all-app/base.html' %}
+{% load bootstrap3 %}
 {% load static %}
 
   {% block styles %}
@@ -6,9 +6,10 @@
   {% endblock %}
 
   {% block content %}
+    {{block.super}}
     <div class="container">
       <div class="row">
-        <img src="{{photo.image.url}}" alt="{{photo.title}}" class="img-responsive">
+        <img src="{{photo.image.url}}" alt="{{photo.title}}" class="img-responsive" id="modalImage">
       </div>
       <div class="row">
         {% for tag in photo.tags.all %}
@@ -17,3 +18,7 @@
       </div>
     </div>
   {% endblock %}
+  {% block scritps %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    /{% bootstrap_javascript %}
+  {%endblock%}
