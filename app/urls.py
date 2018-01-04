@@ -13,6 +13,5 @@ urlpatterns=[
 ]
 
 urlpatterns +=staticfiles_urlpatterns()
-
 if settings.DEBUG:#reference to the location of uploaded files
 	urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)#app registeres the media root to upload images
